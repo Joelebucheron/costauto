@@ -8,6 +8,7 @@ class CreateCars < ActiveRecord::Migration[6.0]
       t.float :purchased_price
       t.date :purchased_date
       t.float :total_cost
+      t.references :garage, foreign_key: true
 
       t.timestamps
     end

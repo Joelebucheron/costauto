@@ -7,6 +7,7 @@ class CreateInvoices < ActiveRecord::Migration[6.0]
       t.float :price
       t.integer :kilometers
       t.date :date
+      t.references :car, foreign_key: true
 
       t.timestamps
     end
