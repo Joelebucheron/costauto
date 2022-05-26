@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: { message: "must be given please" }, uniqueness: { case_sensitive: false }, length: { maximum: 20, too_long: "%{count} characters is the maximum allowed" }
+  #validates :nickname, presence: { message: "must be given please" }, uniqueness: { case_sensitive: false }, length: { maximum: 20, too_long: "%{count} characters is the maximum allowed" }
     # insérer un message pour doublon nickname https://guides.rubyonrails.org/active_record_validations.html#format
     # validates :username,
       # uniqueness: {
@@ -16,4 +16,9 @@ class User < ApplicationRecord
       # }
     #  end
   validates :email, uniqueness: { case_sensitive: false }
+
+
+  has_many :garages
+  has_many :cars, through: :garages, dependent: :destroy
+  has_many :invoices, through: :cars, dependent: :destroy
 end

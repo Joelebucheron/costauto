@@ -3,4 +3,6 @@ class Car < ApplicationRecord
   validates :kilometers, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :purchased_price, numericality: true
   validates :purchased_date
+
+  belongs_to :garage
 end
