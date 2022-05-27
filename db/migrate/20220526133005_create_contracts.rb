@@ -1,6 +1,6 @@
 class CreateContracts < ActiveRecord::Migration[6.0]
   def change
-    create_table :create_contracts do |t|
+    create_table :contracts do |t|
       t.string :name
       t.string :category
       t.integer :price

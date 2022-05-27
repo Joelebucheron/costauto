@@ -5,4 +5,6 @@ class Car < ApplicationRecord
   validates :purchased_date
 
   belongs_to :garage
+  has_many :invoices
+  has_many :contracts
 end

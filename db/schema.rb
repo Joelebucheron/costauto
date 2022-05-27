@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_24_195157) do
+ActiveRecord::Schema.define(version: 2022_05_26_133005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_05_24_195157) do
     t.index ["garage_id"], name: "index_cars_on_garage_id"
   end
 
-  create_table "create_contracts", force: :cascade do |t|
+  create_table "contracts", force: :cascade do |t|
     t.string "name"
     t.string "category"
     t.integer "price"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_05_24_195157) do
     t.bigint "car_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["car_id"], name: "index_create_contracts_on_car_id"
+    t.index ["car_id"], name: "index_contracts_on_car_id"
   end
 
   create_table "garages", force: :cascade do |t|
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2022_05_24_195157) do
   end
 
   add_foreign_key "cars", "garages"
-  add_foreign_key "create_contracts", "cars"
+  add_foreign_key "contracts", "cars"
   add_foreign_key "garages", "users"
   add_foreign_key "invoices", "cars"
 end
