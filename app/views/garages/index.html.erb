@@ -1,0 +1,18 @@
+<h1>Garages index</h1>
+
+<h3>Créer un garage</h3>
+<%= link_to new_garage_path do %>
+  <button class= 'outline-button' > Créer un nouveau garage </button>
+<% end %>
+
+<% @garages.each do |garage|%>
+  <%= link_to garage_path(garage) do %>
+    <%= garage.name %>
+    <%= link_to edit_garage_path(garage) do %>
+      <button>edit</button>
+    <% end %>
+    <%= link_to garage_path(garage), method: :delete do %>
+      <button>delete</button>
+    <% end %>
+  <% end %>
+<% end %>
