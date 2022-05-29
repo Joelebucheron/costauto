@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_195912) do
+ActiveRecord::Schema.define(version: 2022_05_26_133005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.string "name"
+    t.integer "kilometers"
+    t.float "purchased_price"
+    t.date "purchased_date"
+    t.float "total_cost"
+    t.bigint "garage_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["garage_id"], name: "index_cars_on_garage_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.integer "price"
+    t.date "starting_date"
+    t.date "ending_date"
+    t.bigint "car_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_contracts_on_car_id"
+  end
+
+  create_table "garages", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_garages_on_user_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "name"
+    t.string "supplier"
+    t.string "piece"
+    t.float "price"
+    t.integer "kilometers"
+    t.date "date"
+    t.bigint "car_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_invoices_on_car_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +70,13 @@ ActiveRecord::Schema.define(version: 2022_05_11_195912) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "garages"
+  add_foreign_key "contracts", "cars"
+  add_foreign_key "garages", "users"
+  add_foreign_key "invoices", "cars"
 end
