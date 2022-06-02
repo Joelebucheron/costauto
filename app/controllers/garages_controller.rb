@@ -6,6 +6,7 @@ class GaragesController < ApplicationController
 
   def show
     find
+    @cars = Car.where(garage: @garage)
   end
 
   def new

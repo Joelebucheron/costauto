@@ -1,0 +1,18 @@
+<h1>Show de <%= @car.name %></h1>
+<h3>Marque: <%= @car.brand %></h3>
+<h3>Model: <%= @car.model %></h3>
+<h3>kilomètres: <%= @car.kilometers %> km(s)</h3>
+<h3>Coût total: <%= @car.total_cost %> €</h3>
+<h3><%= ownership_time %></h3>
+
+<%= link_to edit_car_path(@car) do %>
+  <button>Modifier</button>
+<% end %>
+
+<%= link_to car_path(@car), method: :delete do %>
+  <button>Supprimer</button>
+<% end %>
+
+<%= link_to garage_path(@garage) do %>
+  <button>Retour aux garages</button>
+<% end %>
