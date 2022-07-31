@@ -24,7 +24,7 @@ class GaragesController < ApplicationController
   end
 
   def edit
-    @garage = Garage.find(params[:id])
+    find
   end
 
   def update

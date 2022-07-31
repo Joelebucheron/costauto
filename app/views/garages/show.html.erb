@@ -5,11 +5,13 @@
 <button>Ajouter une voiture</button>
 <% end %>
 
-<% @cars.each do |car| %>
-    <%= link_to garage_car_path(car.garage, car) do %>
-      <button><%= car.name %></button>
-    <% end %>
-<% end %>
+<ul>
+  <% @cars.each do |car| %>
+      <%= link_to garage_car_path(car.garage, car) do %>
+        <li><button><%= car.name %></button></li>
+      <% end %>
+  <% end %>
+</ul>
 
 <%= link_to garages_path do %>
   <button>Retour aux garages</button>

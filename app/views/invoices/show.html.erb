@@ -1,0 +1,18 @@
+<h1>Show invoice</h1>
+
+<ul>
+  <li><%= @invoice.name %></li>
+  <li><%= @invoice.date %></li>
+  <li><%= @invoice.supplier %></li>
+  <li><%= @invoice.piece %></li>
+  <li><%= @invoice.price %> €</li>
+  <li><%= @invoice.kilometers %> kms</li>
+</ul>
+
+<%= link_to garage_car_invoices_path(@invoice.car.garage, @invoice.car) do %>
+  <button>Retour aux factures</button>
+<% end %>
+
+<%= link_to edit_invoice_path(@invoice.car.garage, @invoice.car, @invoice) do %>
+  <button>Modifier</button>
+<% end %>

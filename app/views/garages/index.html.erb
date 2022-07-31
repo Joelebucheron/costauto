@@ -4,15 +4,16 @@
 <%= link_to new_garage_path do %>
   <button class= 'outline-button' > Créer un nouveau garage </button>
 <% end %>
-
-<% @garages.each do |garage|%>
-  <%= link_to garage_path(garage) do %>
-    <%= garage.name %>
-    <%= link_to edit_garage_path(garage) do %>
-      <button>edit</button>
-    <% end %>
-    <%= link_to garage_path(garage), method: :delete do %>
-      <button>Supprimer <%= garage.name %></button>
-    <% end %>
+<ul>
+  <% @garages.each do |garage|%>
+    <li><%= link_to garage_path(garage) do %>
+      <%= garage.name %>
+      <%= link_to edit_garage_path(garage) do %>
+        <button>edit</button>
+      <% end %>
+      <%= link_to garage_path(garage), method: :delete do %>
+        <button>Supprimer <%= garage.name %></button>
+      <% end %>
+    <% end %></li>
   <% end %>
-<% end %>
+</ul>

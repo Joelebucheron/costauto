@@ -1,0 +1,14 @@
+<h1>new invoice</h1>
+
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.association :car %>
+  <%= f.input :name %>
+  <%= f.input :piece, placeholder: 'Pneus, freins, vidange'  %>
+  <%= f.input :supplier, placeholder: 'Euromaster, Speedy etc.' %>
+  <%= f.input :price, as: :float  %>
+  <%= f.input :date, as: :date %>
+  <%= f.input :kilometers, as: :integer %>
+  <%= f.submit %>
+
+<% end %>
+
