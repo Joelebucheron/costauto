@@ -1,0 +1,13 @@
+<h1>Ajouter une voiture</h1>
+
+<%= simple_form_for([@garage, @car]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :brand %>
+  <%= f.input :model %>
+  <%= f.input :kilometers %>
+  <%= f.input :purchased_price %>
+  <%= f.input :purchased_date %>
+  <%= f.submit %>
+
+<% end %>
+

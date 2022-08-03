@@ -1,2 +1,18 @@
 <h1>Bienvenue dans votre garage <%= @garage.name %></h1>
-<h3>vous avez XX véhicules</h3>
+<h3>vous avez <%= @garage.cars.count %> véhicules</h3>
+
+<%= link_to new_garage_car_path(@garage) do %>
+<button>Ajouter une voiture</button>
+<% end %>
+
+<ul>
+  <% @cars.each do |car| %>
+      <%= link_to garage_car_path(car.garage, car) do %>
+        <li><button><%= car.name %></button></li>
+      <% end %>
+  <% end %>
+</ul>
+
+<%= link_to garages_path do %>
+  <button>Retour aux garages</button>
+<% end %>

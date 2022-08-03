@@ -6,6 +6,7 @@ class GaragesController < ApplicationController
 
   def show
     find
+    @cars = Car.where(garage: @garage)
   end
 
   def new
@@ -14,7 +15,6 @@ class GaragesController < ApplicationController
 
   def create
     @garage = Garage.new(garage_params)
-    @garage.user = current_user
     if @garage.save
       redirect_to garage_path(@garage)
     else
@@ -23,7 +23,7 @@ class GaragesController < ApplicationController
   end
 
   def edit
-    @garage = Garage.find(params[:id])
+    find
   end
 
   def update

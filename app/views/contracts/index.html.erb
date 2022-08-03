@@ -1,0 +1,18 @@
+<h1><%= 'Contrat'.pluralize(@contracts) %> de <%= @car.name %></h1>
+
+<ol>
+  <% @contracts.each do |contract| %>
+    <%= link_to garage_car_contract_path(@car.garage, @car, contract) do %>
+      <li><button><%= contract.name %></button></li>
+    <% end %>
+  <% end %>
+
+</ol>
+
+<%= link_to new_contract_path do %>
+  <button>Créer un nouveau contrat</button>
+<% end %>
+
+<%= link_to garage_car_path(@car.garage, @car) do %>
+  <button>Retour à la voiture</button>
+<% end %>

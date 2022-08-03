@@ -1,0 +1,17 @@
+<h1>Index invoices</h1>
+<ol>
+  <% @invoices.each do |invoice| %>
+    <%= link_to garage_car_invoice_path(@car.garage, @car, invoice) do %>
+      <li><button><%= invoice.name %></button></li>
+    <% end %>
+  <% end %>
+
+</ol>
+
+<%= link_to new_invoice_path do %>
+  <button>Créer une nouvelle facture</button>
+<% end %>
+
+<%= link_to garage_car_path(@car.garage, @car) do %>
+  <button>Retour à la voiture</button>
+<% end %>

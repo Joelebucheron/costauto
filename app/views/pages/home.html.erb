@@ -1,2 +1,14 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= link_to garages_path do %>
+  <button>Mes garages</button>
+<% end %>
+
+<%= link_to new_invoice_path do %>
+  <button>Ajouter une dépense</button>
+<% end %>
+
+<%= link_to new_contract_path do %>
+  <button>Ajouter un contrat</button>
+<% end %>
