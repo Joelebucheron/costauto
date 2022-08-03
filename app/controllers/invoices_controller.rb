@@ -37,9 +37,9 @@ class InvoicesController < ApplicationController
 
   def destroy
     @invoice = Invoice.find(params[:id])
-    @car = Car.find(params[:car_id])
+    @car = @invoice.car
     @invoice.destroy
-    redirect_to garage_car_path(@car)
+    redirect_to garage_car_invoices_path(@invoice.car.garage, @invoice.car)
   end
 
   private

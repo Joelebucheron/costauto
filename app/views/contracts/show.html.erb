@@ -1,0 +1,20 @@
+<h1>Show de contract</h1>
+
+<ul>
+  <li><%= @contract.name %></li>
+  <li><%= @contract.category %></li>
+  <li><%= number_to_currency(@contract.price, locale: :fr)%> </li>
+  <li>De <%= @contract.starting_date %> à <%= @contract.ending_date %></li>
+</ul>
+
+<%= link_to garage_car_contracts_path(@contract.car.garage, @contract.car) do %>
+  <button>Retour aux contrats</button>
+<% end %>
+
+<%= link_to edit_contract_path(@contract.car.garage, @contract.car, @contract) do %>
+  <button>Modifier</button>
+<% end %>
+
+<%= link_to contract_path(@contract), method: :delete do %>
+  <li><button>Supprimer</button></li>
+<% end %>

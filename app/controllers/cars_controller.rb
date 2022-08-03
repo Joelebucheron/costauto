@@ -40,17 +40,17 @@ class CarsController < ApplicationController
     end
   end
 
-  def ownership_time
-    distance_of_time_in_words(Date.current, @car.purchased_date)
-  end
-  helper_method :ownership_time
-
   def destroy
     find
     @garage = @car.garage
     @car.destroy
     redirect_to garage_path(@garage)
   end
+
+  def ownership_time
+    distance_of_time_in_words(Date.current, @car.purchased_date)
+  end
+  helper_method :ownership_time
 
   private
 

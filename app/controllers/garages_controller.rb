@@ -15,7 +15,6 @@ class GaragesController < ApplicationController
 
   def create
     @garage = Garage.new(garage_params)
-    @garage.user = current_user
     if @garage.save
       redirect_to garage_path(@garage)
     else
