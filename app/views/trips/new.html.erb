@@ -1,0 +1,9 @@
+<h1>Nouveau trajet</h1>
+
+<%= simple_form_for(@trip) do |f| %>
+  <%= f.association :car %>
+  <%= f.input :name %>
+  <%= f.input :date %>
+  <%= f.input :type, collection: ['Professionel', 'Travail-Domicile', 'Vacance', 'Personnel', 'Autre'] %>
+  <%# <%= f.association :invoice %> %>
+<% end %>

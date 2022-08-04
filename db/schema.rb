@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_133005) do
+ActiveRecord::Schema.define(version: 2022_08_04_131011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2022_05_26_133005) do
     t.index ["car_id"], name: "index_invoices_on_car_id"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.string "name"
+    t.string "type"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_trips_on_car_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -79,4 +89,5 @@ ActiveRecord::Schema.define(version: 2022_05_26_133005) do
   add_foreign_key "contracts", "cars"
   add_foreign_key "garages", "users"
   add_foreign_key "invoices", "cars"
+  add_foreign_key "trips", "cars"
 end
