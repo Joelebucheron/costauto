@@ -1,5 +1,6 @@
 class Trip < ApplicationRecord
   belongs_to :car
+  has_many :invoices
 
-  validates :name, :type, presence: true
+  validates :name, presence: true
 end
