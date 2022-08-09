@@ -1,7 +1,11 @@
 <h1>new invoice</h1>
 
 <%= simple_form_for(@invoice) do |f| %>
-  <%= f.association :car %>
+  <% if @car.nil? %>
+    <%= f.association :car %>
+  <% else %>
+    <%= f.input :car_id, as: :hidden, input_html: { value: params[:format] } %>
+  <% end %>
   <%= f.input :name %>
   <%= f.input :piece, placeholder: 'Pneus, freins, vidange'  %>
   <%= f.input :supplier, placeholder: 'Euromaster, Speedy etc.' %>
@@ -11,4 +15,3 @@
   <%= f.submit %>
 
 <% end %>
-

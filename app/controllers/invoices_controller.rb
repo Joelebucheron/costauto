@@ -11,6 +11,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @car = Car.find(params[:format]) unless params[:format].nil?
   end
 
   def create
