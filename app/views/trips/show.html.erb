@@ -3,6 +3,7 @@
   <li><%= @trip.category %></li>
   <li><%= @trip.date %></li>
   <li><%= number_to_currency(Invoice.where(trip: @trip).sum(:price), locale: :fr, precision: 0) %></li>
+  <%= console %>
 </ol>
 
 <%= link_to edit_trip_path(@trip) do %>
