@@ -45,7 +45,7 @@ class InvoicesController < ApplicationController
   private
 
   def invoice_params
-    params.require(:invoice).permit(:name, :supplier, :piece, :price, :kilometers, :date, :car_id)
+    params.require(:invoice).permit(:name, :supplier, :piece, :price, :kilometers, :date, :car_id, :trip_id)
   end
 
 end

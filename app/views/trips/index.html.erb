@@ -1,0 +1,17 @@
+<h1>Trips de <%= @car.name %></h1>
+
+<ol>
+  <% @trips.each do |trip| %>
+    <%= link_to garage_car_trip_path(@car.garage, @car, trip) do %>
+      <li><button><%= trip.name %><%= trip.date %></button></li>
+    <% end %>
+  <% end %>
+</ol>
+
+<%= link_to new_trip_path(@car) do %>
+  <button>Créer un nouveau trajet</button>
+<% end %>
+
+<%= link_to garage_car_path(@car.garage, @car) do %>
+  <button>Retour à la voiture</button>
+<% end %>

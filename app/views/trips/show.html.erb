@@ -1,0 +1,19 @@
+<h1>Trajet <%= @trip.name %></h1>
+<ol>
+  <li><%= @trip.category %></li>
+  <li><%= @trip.date %></li>
+  <li><%= number_to_currency(Invoice.where(trip: @trip).sum(:price), locale: :fr, precision: 0) %></li>
+  <%= console %>
+</ol>
+
+<%= link_to edit_trip_path(@trip) do %>
+  <button>Modifier</button>
+<% end %>
+
+<%= link_to trip_path(@trip), method: :delete do %>
+  <button>supprimer le trajet</button>
+<% end %>
+
+<%= link_to garage_car_trips_path(@trip.car.garage, @trip.car) do %>
+  <button>Voir les trajets</button>
+<% end %>

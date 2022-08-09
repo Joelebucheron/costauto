@@ -23,6 +23,10 @@
   <button>Voir les contrats</button>
 <% end %>
 
+<%= link_to garage_car_trips_path(@car.garage, @car) do %>
+  <button>Voir les trajets</button>
+<% end %>
+
 <%= link_to garage_path(@garage) do %>
   <button>Retour aux garages</button>
 <% end %>

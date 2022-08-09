@@ -1,0 +1,14 @@
+<h1>Nouveau trajet</h1>
+
+<%= simple_form_for(@trip) do |f| %>
+  <% if @car.nil? %>
+    <%= f.association :car %>
+  <% else %>
+    <%= f.input :car_id, as: :hidden, input_html: { value: params[:format] } %>
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :date %>
+  <%= f.input :category, collection: ['Professionel', 'Travail-Domicile', 'Vacance', 'Personnel', 'Autre'] %>
+  <%= f.association :invoices, collection: Invoice.where(car: @trip.car), as: :check_boxes  %>
+  <%= f.submit %>
+<% end %>
