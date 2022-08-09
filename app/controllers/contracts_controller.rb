@@ -11,6 +11,7 @@ class ContractsController < ApplicationController
 
   def new
     @contract = Contract.new
+    @car = Car.find(params[:format]) unless params[:format].nil?
   end
 
   def create
