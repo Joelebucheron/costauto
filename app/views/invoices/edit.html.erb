@@ -10,7 +10,7 @@
   <%= f.input :piece, placeholder: 'Pneus, freins, vidange'  %>
   <%= f.input :supplier, placeholder: 'Euromaster, Speedy etc.' %>
   <%= f.input :price, as: :float  %>
-  <%= f.input :date, as: :date %>
+  <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"}%>
   <%= f.input :kilometers, as: :integer %>
   <%= f.submit %>
 

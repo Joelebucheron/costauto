@@ -7,7 +7,7 @@
     <%= f.input :car_id, as: :hidden, input_html: { value: params[:format] } %>
   <% end %>
   <%= f.input :name %>
-  <%= f.input :date %>
+  <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :category, collection: ['Professionel', 'Travail-Domicile', 'Vacance', 'Personnel', 'Autre'] %>
   <%= f.association :invoices, collection: Invoice.where(car: @trip.car), as: :check_boxes  %>
   <%= f.submit %>
