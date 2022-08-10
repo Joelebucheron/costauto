@@ -1,7 +1,11 @@
 <h1>Modifier un <%= @contract.name %></h1>
 
 <%= simple_form_for(@contract) do |f| %>
-  <%= f.association :car %>
+  <% if @car.nil? %>
+    <%= f.association :car %>
+  <% else %>
+    <%= f.input :car_id, as: :hidden, input_html: { value: params[:format] } %>
+  <% end %>
   <%= f.input :name, hint: "Donnez un nom à votre contrat" %>
   <%= f.input :category, placeholder: "Assurance, Contrat d'entretien" %>
   <%= f.input :price, as: :integer %>

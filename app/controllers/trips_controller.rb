@@ -12,13 +12,10 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     @car = Car.find(params[:format]) unless params[:format].nil?
-    @trip.car = @car
   end
 
   def create
     @trip = Trip.new(trip_params)
-    # @car = Car.find(params[:format]) unless params[:format].nil?
-    # @trip.car = @car
     if @trip.save
       redirect_to garage_car_trip_path(@trip.car, @trip.car.garage, @trip)
     else

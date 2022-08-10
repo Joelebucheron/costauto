@@ -52,6 +52,18 @@ class CarsController < ApplicationController
   end
   helper_method :ownership_time
 
+  def distance_of_time_in(unit, from, to)
+    diff = to - from
+
+    if 1.respond_to? unit
+      distance = diff / 1.send(unit)
+      distance.abs.round
+    else
+      raise ArgumentError, "#{unit.inspect} is not supported as unit"
+    end
+  end
+  helper_method :distance_of_time_in
+
   private
 
   def car_params
