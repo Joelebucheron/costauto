@@ -6,6 +6,8 @@
 <h3>Coût  total: <%= number_to_currency((Invoice.where(car: @car).sum(:price)+@car.purchased_price), locale: :fr, precision: 0)%></h3>
 <h3>Prix au km: <%= number_to_currency(((Invoice.where(car: @car).sum(:price)+@car.purchased_price)/@car.kilometers), locale: :fr) %> / km</h3>
 <h3><%= ownership_time %></h3>
+<h3><%= @car.purchased_date %></h3>
+<h3><%= Time.now %></h3>
 
 <%= link_to edit_car_path(@car) do %>
   <button>Modifier</button>
