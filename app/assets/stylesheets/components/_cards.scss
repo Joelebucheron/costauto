@@ -1,0 +1,88 @@
+.card-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid lightgrey;
+  background-color: rgba(216, 216, 216, 0.2);
+  border-radius: 2px;
+  padding: 5px;
+  margin: 10px;
+  width: 50vh;
+  height: 30vh;
+  i{
+    color: white;
+    font-size: 4rem;
+    padding: 10px 0;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  &:hover{
+    background-color: rgba(216, 216, 216, 0.5);
+    color: white;
+    i {
+      color: white;
+    }
+  }
+}
+
+.cards-garage-container {
+  display: flex;
+  justify-content: center;
+}
+.cards-garage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid lightgrey;
+  background-color: rgba(216, 216, 216, 0.2);
+  border-radius: 2px;
+  padding: 5px;
+  margin: 10px;
+  width: 40vh;
+  height: 40vh;
+
+  i {
+    color: white;
+    font-size: 4rem;
+    padding: 10px 0;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    background-color: rgba(216, 216, 216, 0.5);
+    color: white;
+
+    i {
+      color: white;
+    }
+  }
+  h3 {
+    color: #235789;
+  }
+
+}
+
+.small-cards {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #235789;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  padding: 0px;
+  i {
+    font-size: 15px;
+  }
+  p {
+    font-size: 10px;
+  }
+}

@@ -1,2 +1,38 @@
 // Specific CSS for your home-page
+.home_container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), asset_url("homepage.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  h1 {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4em;
+  }
+  h3 {
+    color: whitesmoke;
+    text-align: center;
+  }
+  a{
+    color: white;
+  }
+}
+.home_buttons {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
 
+
+  .button_one {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .button_two {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+}

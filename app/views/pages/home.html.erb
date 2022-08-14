@@ -1,19 +1,36 @@
+<div class="home_container">
+  <h1>Costauto</h1>
+  <h3>Calculez combien votre véhicule vous coûtes réellement </h3>
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+  <div class="home_buttons">
+      <%= link_to garages_path do %>
+        <div class="card-home">
+          <i class="fa-solid fa-warehouse"></i>
+          <p>Mes garages</p>
+        </div>
+      <% end %>
 
-<%= link_to garages_path do %>
-  <button>Mes garages</button>
-<% end %>
+    <div class="button_two">
+      <%= link_to new_invoice_path do %>
+        <div class="card-home">
+          <i class="fa-solid fa-receipt"></i>
+          <p>Ajouter une dépense</p>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to new_invoice_path do %>
-  <button>Ajouter une dépense</button>
-<% end %>
+    <%= link_to new_contract_path do %>
+      <div class="card-home">
+        <i class="fa-solid fa-file-signature"></i>
+        <p>Ajouter un contrat</p>
+      </div>
+    <% end %>
 
-<%= link_to new_contract_path do %>
-  <button>Ajouter un contrat</button>
-<% end %>
-
-<%= link_to new_trip_path do %>
-  <button>Ajouter un nouveau trajet</button>
-<% end %>
+    <%= link_to new_trip_path do %>
+      <div class="card-home">
+        <i class="fa-solid fa-map"></i>
+        <p>Ajouter un nouveau trajet</p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.icons {
+
+  i {
+    padding: 20px;
+    color: darkgray;
+    font-size: 1rem;
+    &:hover {
+      color: #235789;
+    }
+  }
+}
+
+.small-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+  color: white;
+  i {
+    padding: 10px 0 0 0;
+  }
+
+}
