@@ -55,7 +55,7 @@ class CarsController < ApplicationController
 
   def car_ownership(car)
     result = (car.purchased_date - Date.today).abs / 365
-    result / 1
+    result.to_i / 1
   end
   helper_method :car_ownership
 
@@ -64,7 +64,7 @@ class CarsController < ApplicationController
 
     if 1.respond_to? unit
       distance = diff / 1.send(unit)
-      distance.round
+      distance.abs.round
     else
       raise ArgumentError, "#{unit.inspect} is not supported as unit"
     end

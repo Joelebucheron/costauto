@@ -1,25 +1,27 @@
 <div class="garage-container">
-  <h1>Show de <%= @car.name %></h1>
+  <div class="title_car">
+    <h1>Show de <%= @car.name %></h1>
+    <%= link_to edit_car_path(@car) do %>
+      <i class="fa-solid fa-pencil"></i>
+    <% end %>
+
+    <%= link_to car_path(@car), method: :delete do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  </div>
   <div class="car_info_card">
     <h3>Marque: <%= @car.brand %></h3>
     <h3>Modèle: <%= @car.model %></h3>
     <h3>Acheté le <%= @car.purchased_date %></h3>
+    <h3>Achetée: <%= number_to_currency(@car.purchased_price, locale: :fr, precision: 0) %> </h3>
     <h3><i class="fa-solid fa-road"></i> <%= number_with_delimiter(@car.kilometers, delimiter: " ") %> <%= 'kilomètre'.pluralize(@car.kilometers) %></h3>
   </div>
   <h3><i class="fa-solid fa-oil-can"></i></i> Coût entretien total: <%= number_to_currency(Invoice.where(car: @car).sum(:price), locale: :fr, precision: 0)%></h3>
   <h3><i class="fa-solid fa-file-invoice-dollar"></i> Coût  total: <%= number_to_currency((Invoice.where(car: @car).sum(:price)+@car.purchased_price), locale: :fr, precision: 0)%></h3>
   <h3>Prix au km: <%= number_to_currency(((Invoice.where(car: @car).sum(:price)+@car.purchased_price)/@car.kilometers), locale: :fr) %> / km</h3>
+  <h3>Prix par année <%= number_to_currency((Invoice.where(car: @car).sum(:price)+@car.purchased_price)/ car_ownership(@car), locale: :fr) %></h3>
   <h3><i class="fa-solid fa-calendar-days"></i> <%= ownership_time(@car) %></h3>
-  <h3>test calcul <%= car_ownership(@car) %></h3>
-  <h3>distance of in time in<%= distance_of_time_in(:days, @car.purchased_date, Date.today)%></h3>
 
-  <%= link_to edit_car_path(@car) do %>
-    <button class='button'>Modifier</button>
-  <% end %>
-
-  <%= link_to car_path(@car), method: :delete do %>
-    <button class='button'>Supprimer</button>
-  <% end %>
 
   <%= link_to garage_car_invoices_path(@car.garage, @car) do %>
     <button class='button'>Voir les factures</button>
