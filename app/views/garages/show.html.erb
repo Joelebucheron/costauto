@@ -1,18 +1,34 @@
-<h1>Bienvenue dans votre garage <%= @garage.name %></h1>
-<h3>vous avez <%= @garage.cars.count %> véhicules</h3>
-
-<%= link_to new_garage_car_path(@garage) do %>
-<button>Ajouter une voiture</button>
-<% end %>
-
-<ul>
-  <% @cars.each do |car| %>
-      <%= link_to garage_car_path(car.garage, car) do %>
-        <li><button><%= car.name %></button></li>
-      <% end %>
+<div class="garage-container">
+  <h1>Bienvenue dans votre garage <%= @garage.name %></h1>
+  <% if @garage.cars.count > 0 %>
+    <h3><%= @garage.cars.count %> <%= 'véhicule'.pluralize(@garage.cars.count) %> </h3>
+  <% else %>
+    <h3>Votre garage est vide</h3>
   <% end %>
-</ul>
+  <div class="retour-garage">
+    <%= link_to garages_path do %>
+      <button class='button'>Retour aux garages</button>
+    <% end %>
+  </div>
 
-<%= link_to garages_path do %>
-  <button>Retour aux garages</button>
-<% end %>
+<div class="cards-garage-container">
+  <% @cars.each do |car| %>
+    <%= link_to garage_car_path(car.garage, car) do %>
+      <div class="cards-garage">
+        <i class="fa-solid fa-car"></i>
+        <h3><%= car.model%></h3>
+        <h6><%= number_with_delimiter(car.kilometers, delimiter: " ") %> kms</h6>
+        <h6><%= number_to_currency(((Invoice.where(car: car).sum(:price)+car.purchased_price)/car.kilometers), locale: :fr) %> / km</h6>
+      </div>
+    <% end %>
+  <% end %>
+  <%= link_to new_garage_car_path(@garage) do %>
+    <div class="cards-garage">
+      <i class="fa-solid fa-plus"></i>
+      <h3>Ajouter une voiture</h3>
+    </div>
+  <% end %>
+</div>
+
+
+</div>

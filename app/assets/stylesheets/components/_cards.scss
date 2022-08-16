@@ -61,10 +61,14 @@
 
     i {
       color: white;
+      visibility: visible;
     }
   }
   h3 {
     color: #235789;
+  }
+  h6 {
+    color: white;
   }
 
 }
@@ -85,4 +89,8 @@
   p {
     font-size: 10px;
   }
+}
+
+.car_info_card {
+  display: flex;
 }
