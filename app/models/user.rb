@@ -21,4 +21,6 @@ class User < ApplicationRecord
   has_many :garages
   has_many :cars, through: :garages, dependent: :destroy
   has_many :invoices, through: :cars, dependent: :destroy
+  has_many :contracts, through: :cars, dependent: :destroy
+  has_many :trips, through: :cars, dependent: :destroy
 end

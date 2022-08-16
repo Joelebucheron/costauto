@@ -47,10 +47,17 @@ class CarsController < ApplicationController
     redirect_to garage_path(@garage)
   end
 
-  def ownership_time
-    distance_of_time_in_words(Date.current, @car.purchased_date)
+#############
+  def ownership_time(car)
+    distance_of_time_in_words(Date.current, car.purchased_date)
   end
   helper_method :ownership_time
+
+  def car_ownership(car)
+    result = (car.purchased_date - Date.today).abs / 365
+    result.to_i / 1
+  end
+  helper_method :car_ownership
 
   def distance_of_time_in(unit, from, to)
     diff = to - from

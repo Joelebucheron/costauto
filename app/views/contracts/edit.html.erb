@@ -9,8 +9,8 @@
   <%= f.input :name, hint: "Donnez un nom à votre contrat" %>
   <%= f.input :category, placeholder: "Assurance, Contrat d'entretien" %>
   <%= f.input :price, as: :integer %>
-  <%= f.input :starting_date, as: :date %>
-  <%= f.input :ending_date, as: :date %>
+  <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker"}%>
+  <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.submit %>
 
 <% end %>
