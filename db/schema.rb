@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_195843) do
+ActiveRecord::Schema.define(version: 2022_08_16_154041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 2022_08_04_195843) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "kilometers"
+    t.integer "start_km"
+    t.integer "end_km"
     t.index ["car_id"], name: "index_trips_on_car_id"
   end
 
