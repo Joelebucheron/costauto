@@ -17,24 +17,43 @@
     <h3><i class="fa-solid fa-road"></i> <%= number_with_delimiter(@car.kilometers, delimiter: " ") %> <%= 'kilomètre'.pluralize(@car.kilometers) %></h3>
   </div>
   <h3><i class="fa-solid fa-oil-can"></i></i> Coût entretien total: <%= number_to_currency(Invoice.where(car: @car).sum(:price), locale: :fr, precision: 0)%></h3>
-  <h3><i class="fa-solid fa-file-invoice-dollar"></i> Coût  total: <%= number_to_currency((Invoice.where(car: @car).sum(:price)+@car.purchased_price), locale: :fr, precision: 0)%></h3>
-  <h3>Prix au km: <%= number_to_currency(((Invoice.where(car: @car).sum(:price)+@car.purchased_price)/@car.kilometers), locale: :fr) %> / km</h3>
-  <h3>Prix par année <%= number_to_currency((Invoice.where(car: @car).sum(:price)+@car.purchased_price)/ car_ownership(@car), locale: :fr) %></h3>
+  <h3><i class="fa-solid fa-file-invoice-dollar"></i> Coût  total: <%= number_to_currency(ownership_cost(@car), locale: :fr, precision: 0) %></h3>
+  <h3>Prix au km: <%= number_to_currency((ownership_cost(@car)/@car.kilometers), locale: :fr) %> / km</h3>
+  <h3>Prix par année <%= number_to_currency(ownership_cost(@car)/ car_ownership(@car), locale: :fr) %></h3>
   <h3><i class="fa-solid fa-calendar-days"></i> <%= ownership_time(@car) %></h3>
 
+  <div class="invoice-cards">
+    <div class="invoice-card">
+      <%= link_to garage_car_invoices_path(@car.garage, @car) do %>
+        <i class="fa-solid fa-receipt"></i>
+        <h6><%= @car.invoices.count %> <%= 'facture'.pluralize(@car.invoices.count) %></h6>
+        <%= link_to new_invoice_path(@car) do %>
+          <button class='button'>Ajouter facture</button>
+        <% end %>
+      <% end %>
+    </div>
 
-  <%= link_to garage_car_invoices_path(@car.garage, @car) do %>
-    <button class='button'>Voir les factures</button>
-  <% end %>
+    <%= link_to garage_car_contracts_path(@car.garage, @car) do %>
+      <div class="invoice-card">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        <h6><%= @car.contracts.count %> <%= 'contrat'.pluralize(@car.contracts.count) %></h6>
+        <%= link_to new_contract_path(@car) do %>
+          <button class='button'>Ajouter contrat</button>
+        <% end %>
+      </div>
+    <% end %>
 
-  <%= link_to garage_car_contracts_path(@car.garage, @car) do %>
-    <button class='button'>Voir les contrats</button>
-  <% end %>
+    <%= link_to garage_car_trips_path(@car.garage, @car) do %>
+      <div class="invoice-card">
+        <i class="fa-solid fa-route"></i>
+        <h6><%= @car.trips.count %> <%= 'trajet'.pluralize(@car.trips.count) %></h6>
+          <%= link_to new_trip_path(@car) do %>
+            <button class='button'>Ajouter trajet</button>
+          <% end %>
+      </div>
+    <% end %>
 
-  <%= link_to garage_car_trips_path(@car.garage, @car) do %>
-    <button class='button'>Voir les trajets</button>
-  <% end %>
-
+  </div>
   <%= link_to garage_path(@garage) do %>
     <button class='button'>Retour aux garages</button>
   <% end %>

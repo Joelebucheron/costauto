@@ -9,6 +9,9 @@
   <%= f.input :name %>
   <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :category, collection: ['Professionel', 'Travail-Domicile', 'Vacance', 'Personnel', 'Autre'] %>
+  <%= f.input :kilometers %>
+  <%= f.input :start_km %>
+  <%= f.input :end_km %>
   <%= f.association :invoices, collection: Invoice.where(car: @trip.car), as: :check_boxes  %>
   <%= f.submit %>
 <% end %>

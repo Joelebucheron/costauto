@@ -7,7 +7,7 @@
     <%= f.input :car_id, as: :hidden, input_html: { value: params[:format] } %>
   <% end %>
   <%= f.input :name %>
-  <%= f.input :piece, placeholder: 'Pneus, freins, vidange'  %>
+  <%= f.input :piece, collection: ['Entretien', 'Nettoyage', 'Carburant', 'Recharge', 'Péage', 'Mécanique', 'Carosserie', 'Amendes', 'Administratif'], placeholder: 'Pneus, freins, vidange'  %>
   <%= f.input :supplier, placeholder: 'Euromaster, Speedy etc.' %>
   <%= f.input :price, as: :float  %>
   <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>

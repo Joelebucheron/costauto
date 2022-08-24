@@ -1,5 +1,7 @@
 class InvoicesController < ApplicationController
 
+  # FACTURES = ['Entretien', 'Lavage', 'Carburant', 'Péage', 'Mécanique', 'Carosserie', 'Recharge']
+
   def index
     @car = Car.find(params[:car_id])
     @invoices = Invoice.where(car: @car)
