@@ -94,3 +94,34 @@
 .car_info_card {
   display: flex;
 }
+
+.invoice-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 5px;
+  margin: 10px;
+}
+.invoice-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 8em;
+  padding: 5px;
+  margin: 10px;
+  border: 1px dotted lightgrey;
+  background-color: rgba(216, 216, 216, 0.4);
+  border-radius: 2px;
+  h6 {
+    color: white;
+  }
+  i {
+    color: white;
+    font-size: 2em;
+    padding: 5px 0;
+  }
+
+}

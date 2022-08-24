@@ -2,7 +2,7 @@
 <ol>
   <% @invoices.each do |invoice| %>
     <%= link_to garage_car_invoice_path(@car.garage, @car, invoice) do %>
-      <li><button><%= invoice.name %></button></li>
+      <li><button><%= invoice.name %> <%= invoice.piece %></button></li>
     <% end %>
   <% end %>
 

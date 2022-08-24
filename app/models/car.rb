@@ -8,5 +8,5 @@ class Car < ApplicationRecord
   has_many :invoices
   has_many :contracts
   has_many :trips
-  has_many :invoices, through: :trips
+
 end

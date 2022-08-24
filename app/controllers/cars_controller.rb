@@ -47,7 +47,7 @@ class CarsController < ApplicationController
     redirect_to garage_path(@garage)
   end
 
-#############
+############# Methode de Temps ###############
   def ownership_time(car)
     distance_of_time_in_words(Date.current, car.purchased_date)
   end
@@ -70,6 +70,12 @@ class CarsController < ApplicationController
     end
   end
   helper_method :distance_of_time_in
+##################################################
+
+  def ownership_cost(car)
+    (Invoice.where(car: car, piece: 'Entretien').sum(:price) + car.purchased_price)
+  end
+  helper_method :ownership_cost
 
   private
 
